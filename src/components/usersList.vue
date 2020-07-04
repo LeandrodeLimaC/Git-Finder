@@ -1,17 +1,19 @@
 <template>
     <div>
-        <tr v-for="user of Users" :key="user.id">
-            <td>
-                <img :src="user.avatar_url">{{user}}</td>
-            <br>
-        </tr> 
+        <userItem v-for="user of Users" :key="user.id"
+        :User="user"/>
     </div>
 </template>
 
 <script>
+import userItem from '@/components/userItem'
+
 export default {
     props:{
         Users: {}
+    },
+    components:{
+        userItem
     }
 }
 </script>
