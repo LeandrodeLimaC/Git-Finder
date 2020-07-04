@@ -2,10 +2,8 @@
   <div id="app">
     <searchBar
     @debouncedQuery = 'searchUsers($event)'/>
-    <tr v-for="user of users" :key="user.id">
-      <td>{{user.login}}</td>
-     
-    </tr>
+    <usersList
+    :Users = this.users />
   </div>
 </template>
 
@@ -15,11 +13,13 @@ import Users from './services/users'
 
 // Components
 import searchBar from './components/searchBar'
+import usersList from './components/usersList'
 
 export default {
   name: 'App',
   components: {
-    searchBar
+    searchBar,
+    usersList
   },
   data () {
     return {
