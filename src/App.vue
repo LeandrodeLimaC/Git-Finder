@@ -30,22 +30,23 @@ export default {
   methods:{
   searchUsers(searchQuery){
     this.isLoading = true;
-    console.log(this.isLoading)
-    Users.search(searchQuery)
-      .then(
-        res => {
-          this.users = res.data.items;
-        }
-      )
-      .catch(
-        error => console.log(error)
-      )
-      .finally(
-        () => {
-        this.isLoading = false
-        console.log(this.isLoading)
-        }
-      )
+    if(searchQuery.length){
+      Users.search(searchQuery)
+        .then(
+          res => {
+            this.users = res.data.items;
+          }
+        )
+        .catch(
+          error => console.log(error)
+        )
+        .finally(
+          () => {
+            this.isLoading = false;
+          }
+        )
+    }
+      this.users = [];
     }
   },
   
