@@ -69,7 +69,7 @@ export default {
         this.isLoadingRepos = true;
         try {
           let reposResponse = await Users.getRepos(userLogin)
-          this.userRepos = response.data;
+          this.userRepos = reposResponse.data;
         } catch (e){
           console.error(e)
         } finally {
