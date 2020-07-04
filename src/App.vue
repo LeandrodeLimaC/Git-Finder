@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <!-- <form v-on:submit.prevent="searchUsers()"> -->
-      <input v-model="searchQuery" type="text" name="" id="">
-      <!-- <button>Procurar</button> -->
-    <!-- </form> -->
-     {{this.teste}}
+    <searchBar
+    @debouncedQuery = 'searchUsers($event)'/>
     <tr v-for="user of users" :key="user.id">
       <td>{{user.login}}</td>
      
@@ -13,39 +10,45 @@
 </template>
 
 <script>
-
+// Services
 import Users from './services/users'
-import {debounce} from './helpers/debounce'
+
+// Components
+import searchBar from './components/searchBar'
 
 export default {
   name: 'App',
-  components: {},
+  components: {
+    searchBar
+  },
   data () {
     return {
       users: [],
-      searchQuery: '',
-      isTyping: false,
-      searchResult: [],
       isLoading: false,
-      teste: ''
     }
   },
   methods:{
-    searchUsers(searchQuery){
-      this.isLoading = true;
-      Users.search(searchQuery)
-        .then(res => {
+  searchUsers(searchQuery){
+    this.isLoading = true;
+    console.log(this.isLoading)
+    Users.search(searchQuery)
+      .then(
+        res => {
           this.users = res.data.items;
         }
       )
-        .catch(error => console.log(error))
+      .catch(
+        error => console.log(error)
+      )
+      .finally(
+        () => {
+        this.isLoading = false
+        console.log(this.isLoading)
+        }
+      )
     }
   },
-    watch: {
-      searchQuery: debounce(function (debouncedQuery) {
-        this.searchUsers(debouncedQuery)
-      }, 500)
-    },
+  
 }
 </script>
 
