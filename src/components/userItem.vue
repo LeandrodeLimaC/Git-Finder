@@ -1,6 +1,9 @@
 <template>
   <div>
-      <img :src="User.avatar_url">{{User}}
+      <div>
+        <img :src="User.avatar_url">
+        {{User}}
+      </div>
   </div>
 </template>
 
