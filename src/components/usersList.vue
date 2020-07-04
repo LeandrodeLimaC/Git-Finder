@@ -1,16 +1,20 @@
 <template>
     <div>
-        <div v-if="userSelected != ''" >
-            <userItem @click.native="clean()"
+        <div v-if="Users.length >= 1 && userSelected == ''">
+            <userItem 
+                v-for="user of Users" :key="user.id"
+                :User="user"
+                @click.native="userClicked(user)"/>
+        </div>
+
+        <div v-else-if="userSelected != ''" >
+            <userItem 
+                @click.native="clean()"
                 :User="userSelected">
                 {{userSelected}}
             </userItem>
         </div>
-        <div v-else-if="Users.length >= 1 && userSelected == ''">
-            <userItem v-for="user of Users" :key="user.id"
-            :User="user"
-            @click.native="userClicked(user)"/>
-        </div>
+        
         <div v-else>
            <p>Nada para listar</p>
         </div>
@@ -36,12 +40,12 @@ export default {
     },
     methods:{
         userClicked(user){
-            console.log(this.userSelected);
             this.userSelected = user;
+            this.$emit("userSelected", this.userSelected.login)
         },
         clean(){
-            console.log('clean user')
             this.userSelected = '';
+            this.$emit("userDeselected", '')
         }
     }
 }
