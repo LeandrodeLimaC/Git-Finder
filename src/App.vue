@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <form v-on:submit.prevent="searchUsers()">
-      <input v-model="Username" type="text" name="" id="">
-      <button>Procurar</button>
-    </form>
+    <!-- <form v-on:submit.prevent="searchUsers()"> -->
+      <input v-model="searchQuery" type="text" name="" id="">
+      <!-- <button>Procurar</button> -->
+    <!-- </form> -->
+     {{this.teste}}
     <tr v-for="user of users" :key="user.id">
       <td>{{user.login}}</td>
+     
     </tr>
   </div>
 </template>
@@ -13,6 +15,7 @@
 <script>
 
 import Users from './services/users'
+import {debounce} from './helpers/debounce'
 
 export default {
   name: 'App',
@@ -20,19 +23,29 @@ export default {
   data () {
     return {
       users: [],
-      Username: ''
+      searchQuery: '',
+      isTyping: false,
+      searchResult: [],
+      isLoading: false,
+      teste: ''
     }
   },
   methods:{
-    searchUsers(){
-      Users.search(this.Username)
+    searchUsers(searchQuery){
+      this.isLoading = true;
+      Users.search(searchQuery)
         .then(res => {
           this.users = res.data.items;
         }
       )
         .catch(error => console.log(error))
     }
-  }
+  },
+    watch: {
+      searchQuery: debounce(function (debouncedQuery) {
+        this.searchUsers(debouncedQuery)
+      }, 500)
+    },
 }
 </script>
 
