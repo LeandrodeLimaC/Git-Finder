@@ -2,8 +2,15 @@
   <div id="app">
     <searchBar
     @debouncedQuery = 'searchUsers($event)'/>
-    <usersList
+
+    <p 
+    v-if="nothingToQuery && !isLoading">Nada para buscar</p>
+
+    <usersList 
+    v-else-if="!nothingToQuery && !isLoading"
     :Users = this.users />
+
+    <p v-if="isLoading">Buscando</p>
   </div>
 </template>
 
@@ -23,18 +30,22 @@ export default {
   },
   data () {
     return {
+      tempUsers: [],
       users: [],
       isLoading: false,
+      nothingToQuery: true
     }
   },
   methods:{
   searchUsers(searchQuery){
-    this.isLoading = true;
-    if(searchQuery.length){
+    if(searchQuery != ""){
+      this.isLoading = true;
+      this.nothingToQuery = false;
       Users.search(searchQuery)
         .then(
           res => {
-            this.users = res.data.items;
+           this.tempUsers = res.data.items
+           console.log("sucess")
           }
         )
         .catch(
@@ -42,11 +53,14 @@ export default {
         )
         .finally(
           () => {
+            this.tempUsers.length != 0 ? this.users = this.tempUsers : '';
             this.isLoading = false;
           }
         )
-    }
+    } else {
       this.users = [];
+      this.nothingToQuery = true;
+    }
     }
   },
   
