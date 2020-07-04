@@ -20,9 +20,7 @@ export default {
     },
     methods:{
         emitQuery(debouncedQuery){
-            if(debouncedQuery.length > 0){
-                this.$emit("debouncedQuery", debouncedQuery)
-            }
+            this.$emit("debouncedQuery", debouncedQuery)
         }
     },
 }
