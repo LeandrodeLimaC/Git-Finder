@@ -58,9 +58,9 @@ export default {
           }
         )
     } else {
-      this.users = [];
       this.nothingToQuery = true;
     }
+    this.users = [];
     }
   },
   
