@@ -1,20 +1,27 @@
 <template>
     <div>
-        <div v-if="Users.length >= 1 && userSelected == ''">
+        <!-- <keep-alive>
+            <component v-bind:is="component"></component>
+        </keep-alive> -->
+        <div v-if="Users.length >= 1 && !userSelected.id && !isLoading">
             <userItem 
                 v-for="user of Users" :key="user.id"
                 :User="user"
                 @click.native="userClicked(user)"/>
         </div>
-
-        <div v-else-if="userSelected != ''" >
+        
+        <div v-else-if="userSelected.id && !isLoading" >
             <userItem 
                 @click.native="clean()"
                 :User="userSelected">
                 {{userSelected}}
             </userItem>
         </div>
-        
+
+        <div v-else-if="!userSelected.id && isLoading">
+            <p>Carregando usuarios</p>
+        </div>
+
         <div v-else>
            <p>Nada para listar</p>
         </div>
@@ -22,29 +29,32 @@
 </template>
 
 <script>
-import userItem from '@/components/userItem'
+import userItem from '@/components/userItem';
 
 export default {
     data(){
         return{
-            userSelected: '',
+            userlogin: '',
         }
     },
     props:{
-        Users: {}
+        Users: Array,
+        isLoading: Boolean,
+        userSelected: Object
     },
     components:{
         userItem
     },
     computed:{
+        // is = 'userItem'
     },
     methods:{
         userClicked(user){
-            this.userSelected = user;
-            this.$emit("userSelected", this.userSelected.login)
+            this.userlogin = user.login;
+            this.$emit("userSelected", this.userlogin)
         },
         clean(){
-            this.userSelected = '';
+            this.userlogin = '';
             this.$emit("userDeselected", '')
         }
     }
