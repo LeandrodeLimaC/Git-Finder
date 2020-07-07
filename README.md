@@ -1,8 +1,11 @@
 # GitFinder  - Code-challenge
 
-[logo]: https://github.com/LeandrodeLimaC/gitfinder/raw/master/src/assets/logo.png "GitFinder"
+[logo]: https://github.com/LeandrodeLimaC/gitfinder/blob/master/src/assets/logo.png "GitFinder"
 
 App baseado em  para buscar usuários do github através da a [API](developer.github.com/v3/) e retornar  seus repositórios com a quantidade de estrelas de cada um.
+
+Testando a criação de um aplicativo enxuto sem rotas, aonde todo o controle é feito pelo App.vue através de estados, e mutações são comunicadas pelos filhos para seus pais 
+diretamente - Teste prático para avaliar Prós e Contras 
 
 ## Requisitos
 ---
@@ -28,6 +31,39 @@ Por fim, inicie o servidor de desenvolvimento através do seguinte comando
 ```
 npm run serve
 ```
+## Estrutura de pastas
+---
+```
++-- public
+|   -- favicon.ico              
+|   -- index.html               
+|
++-- src
+|   |-- assets
+|   |   -- logo.png             
+|   |
+|   +-- components
+|   |   +-- reposList.vue     // Loop do array de repositórios, criação dos itens e gerenciamento de estados 
+|   |   +-- searchBar.vue     // Barra de pesquisa, recebe e emite o valor digitado após receber um debounce (veja o helpers) 
+|   |   +-- usersList.vue     // Criação dos itens da lista de usuário/Gerenciamento de estados/Emite usuário selecionado
+|   |
+|   +-- helpers
+|   |   +-- debounce.js       // Recebe uma função e um delay/aplica os argumentos na função/e devolve a resolução da função 
+|   |
+|   +-- services
+|   |   +-- config.js         // Arquivo de configuração do Axios/ Base url para a API
+|   |   +-- users.js          // Serviços de requisição para rotas de usuários
+|   |
+|   +-- App.vue               // Gerencia chamadas para a API, armazena estados e organiza logicamente a composição do layout
+|   +-- main.js               // Render da aplicação / importação e definição de componentes do material
+|   +-- styles.scss           // Arquivo de configurações globais do Vue Material
+|
++-- .gitignore
++-- babel.config.js
++-- package.json
++-- package-lock.json
++-- README.md
+```
 
 ## Mantenha em mente
 ---
@@ -44,6 +80,7 @@ Exemplo de uma url terminando com o nome do usuário ```www.gitfinder.com.br/use
 Mantenha-se atento com o [gerenciamento dos ciclos de vida](https://br.vuejs.org/v2/guide/instance.html#Diagrama-do-Ciclo-de-Vida) do Vue ao realizar chamadas para a API
 
 
-**Vuex**
+**Vuex** <https://vuex.vuejs.org>
 
-Gerenciamento e controles de estados e mutações de propriedades podem se tornar um problema caso  
+Pacote de gere
+Gerenciamento e controles de [estados e mutações](https://vuex.vuejs.org/guide/mutations.html "Mutações no Vuex") de propriedades podem ser compartilhadas (alem da possibilidade de adição de regras) através da aplicação com mais facilidade, de modo que a fonte de determinada informação ficará mais clara e estruturada
