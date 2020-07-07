@@ -76,10 +76,10 @@ diretamente
 
 ## Mantenha em mente
 ---
-Para escalonar este sistema é um **necessário**
+Este sistema foi feito com um propósito definido e escopo fechado, o desenvolvimento de um sistema robusto exige **práticas adicionais**, como por exemplo as listadas abaixo 
 
-**Rotas** 
-
+##Rotas 
+---
 A utilização de [rotas](https://router.vuejs.org/guide/essentials/dynamic-matching.html "Explicação sobre Rotas") e views separadas possibilita a chamada da API mais direta e organizada, é possível recuperar informações passadas pela rota: ```javascript $route.params.name ``` e caso necessário é possível enviar [props](https://router.vuejs.org/guide/essentials/passing-props.html "Enviando props com routes").
 
 Também há vantagens na usabilidade, como por exemplo caso o usuário deseja compartilhar o link de seu perfil ele poderá simplesmente enviar a URL.
@@ -89,6 +89,6 @@ Exemplo de uma url terminando com o nome do usuário ```www.gitfinder.com.br/use
 Mantenha-se atento com o [gerenciamento dos ciclos de vida](https://br.vuejs.org/v2/guide/instance.html#Diagrama-do-Ciclo-de-Vida) do Vue ao realizar chamadas para a API
 
 
-**Vuex** <https://vuex.vuejs.org>
-
+##Vuex <https://vuex.vuejs.org>
+---
 Gerenciamento e controles de [estados e mutações](https://vuex.vuejs.org/guide/mutations.html "Mutações no Vuex") de propriedades podem ser compartilhadas (alem da possibilidade de adição de regras) através da aplicação com mais facilidade, de modo que a fonte de determinada informação ficará mais clara e estruturada
