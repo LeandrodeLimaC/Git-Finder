@@ -4,9 +4,6 @@
 
 App baseado em  para buscar usuários do github através da a [API](developer.github.com/v3/) e retornar  seus repositórios com a quantidade de estrelas de cada um.
 
-Testando a criação de um aplicativo enxuto sem rotas, aonde todo o controle é feito pelo App.vue através de estados, e mutações são comunicadas pelos filhos para seus pais 
-diretamente - Teste prático para avaliar Prós e Contras 
-
 ## Requisitos
 ---
 Para executar o projeto, será necessário instalar:
@@ -31,8 +28,20 @@ Por fim, inicie o servidor de desenvolvimento através do seguinte comando
 ```
 npm run serve
 ```
+
+## Docker
+
+Em breve
+
 ## Estrutura de pastas
 ---
+
+Testando a criação de um aplicativo enxuto sem rotas, aonde todo o controle é feito pelo App.vue através de estados, e mutações são comunicadas pelos filhos para seus pais 
+diretamente 
+
+***Nota - Vue é uma Framework leve proporciona a propagação de data de uma forma rápida, este aplicativo possuí uma estrutura baseada em mutação de componentes*** 
+***Para que este aplicativo possa se escalonar e se manter gerenciavel, veja a seção de "Mantenha em mente"*** 
+
 ```
 +-- public
 |   -- favicon.ico              
@@ -67,7 +76,7 @@ npm run serve
 
 ## Mantenha em mente
 ---
-Para escalonar este sistema é uma boa opção
+Para escalonar este sistema é um **necessário**
 
 **Rotas** 
 
@@ -82,5 +91,4 @@ Mantenha-se atento com o [gerenciamento dos ciclos de vida](https://br.vuejs.org
 
 **Vuex** <https://vuex.vuejs.org>
 
-Pacote de gere
 Gerenciamento e controles de [estados e mutações](https://vuex.vuejs.org/guide/mutations.html "Mutações no Vuex") de propriedades podem ser compartilhadas (alem da possibilidade de adição de regras) através da aplicação com mais facilidade, de modo que a fonte de determinada informação ficará mais clara e estruturada
