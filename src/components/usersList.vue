@@ -20,7 +20,7 @@
             class="user-profile" 
             v-else-if="userSelected.id && !isLoading" >
             <div class="user-profile__header">
-                <img src="@/assets/logo.svg" class="logo" alt="GitFinder logo">
+                <img src="@/assets/logo.png" class="logo" alt="GitFinder logo">
                 <md-button 
                     :md-ripple="false" 
                     @click="clean()">

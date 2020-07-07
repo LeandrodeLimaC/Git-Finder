@@ -19,17 +19,14 @@ export default {
     watch: {
         searchQuery: 
             debounce(function (debouncedQuery) {
-                console.log(debouncedQuery)
                 debouncedQuery.length > 0 ? this.emitQuery(debouncedQuery) : this.emitCleanedQuery()
             }, 1000)
     },
     methods:{
         emitQuery(debouncedQuery){
-            console.log(debouncedQuery)
             this.$emit("debouncedQuery", debouncedQuery)
         },
         emitCleanedQuery(){
-            console.log("cleaned query")
             this.$emit("CleanedQuery" , '')
         }
     },

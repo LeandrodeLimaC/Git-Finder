@@ -1,7 +1,7 @@
 <template>
   <div id="app">   
     <div class="main-wrapper full-width__column">
-      <img class="logo" v-if="!userSelected.id" src="@/assets/logo.svg">
+      <img class="logo" v-if="!userSelected.id" src="@/assets/logo.png">
       <div v-if="nothingToQuery">
         <md-empty-state 
           class="full-width__column"
@@ -100,7 +100,6 @@ export default {
       },
 
     scrollToTop() {
-        console.log("SCROLLLL")
         window.scrollTo(0,0);
       }  
   }
