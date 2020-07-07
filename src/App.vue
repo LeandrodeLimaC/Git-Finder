@@ -7,12 +7,12 @@
     <div style="display: flex">
       <div style="border: 1px solid black">
         <p 
-          v-if="nothingToQuery && !isLoadingUsers">
+          v-if="nothingToQuery">
           Por que não começar buscando pelo nome de uma pessoa?
         </p>
         
         <usersList 
-          v-else-if="!nothingToQuery"
+          v-else
           @userSelected="searchUserRepos($event)"
           @userDeselected="userDeselected()"
           :Users="users"
