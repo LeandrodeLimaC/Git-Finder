@@ -2,7 +2,7 @@
 
 [logo]: https://github.com/LeandrodeLimaC/gitfinder/blob/master/src/assets/logo.png "GitFinder"
 
-App baseado em  para buscar usuários do github através da a [API](developer.github.com/v3/) e retornar  seus repositórios com a quantidade de estrelas de cada um.
+App desenvolvido em Vue e SCSS (Utilizando o padrão [BEM](https://tableless.com.br/bem-um-novo-metodo-para-seu-css/ "Site de explicação do metodo BEM")) para buscar usuários do github através da a [API](developer.github.com/v3/) e retornar  seus repositórios com a quantidade de estrelas de cada um.
 
 ## Requisitos
 ---
@@ -29,18 +29,14 @@ Por fim, inicie o servidor de desenvolvimento através do seguinte comando
 npm run serve
 ```
 
-## Docker
-
-Em breve
-
 ## Estrutura de pastas
 ---
 
 Testando a criação de um aplicativo enxuto sem rotas, aonde todo o controle é feito pelo App.vue através de estados, e mutações são comunicadas pelos filhos para seus pais 
 diretamente 
 
-***Nota - Vue é uma Framework leve proporciona a propagação de data de uma forma rápida, este aplicativo possuí uma estrutura baseada em mutação de componentes*** 
-***Para que este aplicativo possa se escalonar e se manter gerenciavel, veja a seção de "Mantenha em mente"*** 
+***Nota*** - Vue é uma Framework leve proporciona a propagação de data de uma forma rápida, este aplicativo possuí uma estrutura baseada em mutação de componentes
+Para que este aplicativo possa se escalonar e se manter gerenciavel, veja a seção de ["Mantenha em mente"](https://github.com/LeandrodeLimaC/gitfinder#mantenha-em-mente)
 
 ```
 +-- public
