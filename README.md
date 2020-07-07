@@ -1,6 +1,6 @@
 # GitFinder  - Code-challenge
 
-[logo]: https://github.com/LeandrodeLimaC/gitfinder/raw/master/src/assets/logo.svg "GitFinder"
+[logo]: https://github.com/LeandrodeLimaC/gitfinder/raw/master/src/assets/logo.png "GitFinder"
 
 App baseado em  para buscar usuários do github através da a [API](developer.github.com/v3/) e retornar  seus repositórios com a quantidade de estrelas de cada um.
 
