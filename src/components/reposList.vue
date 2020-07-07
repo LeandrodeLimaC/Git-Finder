@@ -1,17 +1,18 @@
 <template>
-  <div>
-        <md-list style="background:transparent;    width: 100%;" class="md-triple-line"  v-if="userRepos.length >= 1">
+    <div>
+        <md-list class="repos-list md-triple-line"  v-if="userRepos.length >= 1">
             <md-divider/> 
-            <md-list-item v-for="repo in userRepos" v-bind:key="repo.id">
+            <md-list-item 
+                v-for="repo in userRepos" 
+                v-bind:key="repo.id">
                 <div class="md-list-item-text">
-                <span>{{repo.name}}</span>
-                <a :href="repo.html_url" target="_blank">{{repo.full_name}}</a>
-                <p>{{repo.description}}</p>
+                    <span>{{repo.name}}</span>
+                    <a :href="repo.html_url" target="_blank">{{repo.full_name}}</a>
+                    <p>{{repo.description}}</p>
                 </div>
 
-                <div style="display: flex;">
-                    <span style="padding: 0 8px;
-                                 line-height: 1.65rem;">{{repo.stargazers_count}}</span>
+                <div class="l-stars">
+                    <span class="stars__number">{{repo.stargazers_count}}</span>
                    <md-icon>star</md-icon>
                 </div>
             </md-list-item>
@@ -21,7 +22,7 @@
         <div v-else>
            <p>Este usuário não tem repositórios</p>
         </div>
-  </div>    
+    </div>    
 </template>
 
 <script>
@@ -32,6 +33,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
-    
+<style lang="scss" scoped>
+    .l-stars{
+        display: flex;
+        .stars__number{
+            padding: 0 8px;
+            line-height: 1.65rem;
+        }
+    }
+
+    .repos-list{
+        background:transparent!important;
+        width: 100%;
+    }
 </style>
