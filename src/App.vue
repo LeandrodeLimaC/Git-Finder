@@ -1,34 +1,34 @@
 <template>
-  <div id="app">
-    <searchBar
-    @debouncedQuery="searchUsers($event)"
-    @CleanedQuery="cleanQuery()"/>
-    
-    <div style="display: flex">
-      <div style="border: 1px solid black">
-        <p 
-          v-if="nothingToQuery">
-          Por que não começar buscando pelo nome de uma pessoa?
-        </p>
-        
-        <usersList 
-          v-else
-          @userSelected="searchUserRepos($event)"
-          @userDeselected="userDeselected()"
-          :Users="users"
-          :userSelected="userSelected"
-          :isLoading="isLoadingUsers"
+  <div id="app">   
+    <div class="main-wrapper full-width__column">
+      <img class="logo" v-if="!userSelected.id" src="@/assets/logo.svg">
+      <div v-if="nothingToQuery">
+        <md-empty-state 
+          class="full-width__column"
+          md-description="Escreva o nome de uma pessoa para encontrar informações do github, como repositórios e dados públicos">
+        </md-empty-state>
+      </div>
+      <searchBar 
+        v-show="!userSelected.id"
+        @debouncedQuery="searchUsers($event)"
+        @CleanedQuery="cleanQuery()"
         />
-
-      </div>
-      <div style="border: 1px solid blue">
-        <reposList style="width:50vw;"
-          v-if="userSelected.id"
-          :userRepos="userRepos"
-          :isLoading="isLoadingRepos"
-          />
-      </div>
+      <usersList  
+        v-if="!nothingToQuery"
+        @userSelected="searchUserRepos($event)"
+        @userDeselected="userDeselected()"
+        :Users="users"
+        :userSelected="userSelected"
+        :isLoading="isLoadingUsers"
+        />  
+        <reposList 
+        class="full-width__column"
+        v-if="userSelected.id"
+        :userRepos="userRepos"
+        :isLoading="isLoadingRepos"
+        />
     </div>
+   
   </div>
 </template>
 
@@ -36,7 +36,7 @@
 // Services
 import Users from './services/users';
 
-// Components
+// // Components
 import searchBar from './components/searchBar';
 import usersList from './components/usersList';
 import reposList from './components/reposList';
@@ -50,7 +50,6 @@ export default {
   },
   data () {
     return {
-      tempUsers: [],
       users: [],
       isLoadingUsers: false,
       isLoadingRepos: false,
@@ -71,8 +70,10 @@ export default {
           console.error(e);
         } finally {
           this.isLoadingRepos = false;
+          this.scrollToTop();
         }
       },
+
     searchUsers: async function(searchQuery){
         this.isLoadingUsers = true;
         this.nothingToQuery = false;
@@ -86,7 +87,7 @@ export default {
           this.isLoadingUsers = false;
         }
       },
-      
+
     cleanQuery(){
         this.users = []; 
         this.nothingToQuery = true;
@@ -96,20 +97,74 @@ export default {
     userDeselected(){
         this.userRepos = '';
         this.userSelected = {};
-      }
-  }
+      },
 
+    scrollToTop() {
+        console.log("SCROLLLL")
+        window.scrollTo(0,0);
+      }  
+  }
 }
 
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+<style lang="scss">
+@import "@/styles.scss";
+
+.md-theme-default a:not(.md-button) {
+    color: #ff4081;
+    color: var(--md-theme-default-primary-on-background, #ff4081)!important;
+}
+  
+body{
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+#app{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+.main-wrapper{
+  display: flex;
+  flex-flow: column;    
+  max-width: 480px;
+  align-items: center;
+  min-width: 30vw;
+  width: 100%;
+}
+.logo{
+  width: 140px;
+  margin: 20px 0;
+}
+.full-width__column{
+  display: flex;
+  flex-flow: column;
+  max-width: 420px;
+  align-items: center;
+  min-width: 30vw;
+  width: 100%;
+}
+.text-center{
+  text-align: center;
+}
+md-list{
+  background: transparent!important
+}
+a{
+  color: #E562A3
+}
+.md-empty-state{
+    max-width: none;
+    padding: 0!important;
 }
 </style>

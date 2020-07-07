@@ -1,5 +1,9 @@
 <template>
-  <input v-model="searchQuery" type="text" name="" id="">
+    <md-field>
+      <label>Digite aqui para começar!</label>
+      <md-input v-model="searchQuery"></md-input>
+      <md-icon>search</md-icon>
+    </md-field>
 </template>
 
 <script>
@@ -17,7 +21,7 @@ export default {
             debounce(function (debouncedQuery) {
                 console.log(debouncedQuery)
                 debouncedQuery.length > 0 ? this.emitQuery(debouncedQuery) : this.emitCleanedQuery()
-            }, 500)
+            }, 1000)
     },
     methods:{
         emitQuery(debouncedQuery){
@@ -32,6 +36,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    @import "../styles.scss";
+
+    .md-field{
+        max-width: 420px;
+    }
+    .md-field.md-theme-default:before {
+    background-color: #ff4081;
+    background-color: #ff4081;
+}
 
 </style>
