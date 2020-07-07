@@ -2,16 +2,16 @@
 
 [logo]: https://github.com/LeandrodeLimaC/gitfinder/blob/master/src/assets/logo.png "GitFinder"
 
-App desenvolvido em Vue e SCSS (Utilizando o padrão [BEM](https://tableless.com.br/bem-um-novo-metodo-para-seu-css/ "Site de explicação do metodo BEM")) para buscar usuários do github através da a [API](developer.github.com/v3/) e retornar  seus repositórios com a quantidade de estrelas de cada um.
+App desenvolvido em Vue (Como forma de estudo) e SCSS (Utilizando o padrão [BEM](https://tableless.com.br/bem-um-novo-metodo-para-seu-css/ "Site de explicação do metodo BEM")) para buscar usuários do github através da a [API](developer.github.com/v3/) e retornar  seus repositórios com a quantidade de estrelas de cada um.
 
-## Requisitos
+Requisitos
 ---
 Para executar o projeto, será necessário instalar:
 
 1. [Nodejs 12.x](https://nodejs.org/en/)
 
 
-## Começando
+Começando
 ---
 Para iniciar o desenvolvimento, é necessário clonar o projeto do GitHub num diretório de sua preferência:
 
@@ -29,14 +29,13 @@ Por fim, inicie o servidor de desenvolvimento através do seguinte comando
 npm run serve
 ```
 
-## Estrutura de pastas
+Estrutura de pastas
 ---
 
 Testando a criação de um aplicativo enxuto sem rotas, aonde todo o controle é feito pelo App.vue através de estados, e mutações são comunicadas pelos filhos para seus pais 
 diretamente 
 
-***Nota*** - Vue é uma Framework leve proporciona a propagação de data de uma forma rápida, este aplicativo possuí uma estrutura baseada em mutação de componentes
-Para que este aplicativo possa se escalonar e se manter gerenciavel, veja a seção de ["Mantenha em mente"](https://github.com/LeandrodeLimaC/gitfinder#mantenha-em-mente)
+***Nota*** - Vue é uma Framework leve proporciona a propagação de data de uma forma rápida, este aplicativo possuí uma estrutura baseada em mutação de componentes. Caso haja a necessidade deste aplicativo se escalonar para que ele se mantenha gerenciável veja a seção de ["Mantenha em mente"](https://github.com/LeandrodeLimaC/gitfinder#mantenha-em-mente)
 
 ```
 +-- public
@@ -70,11 +69,11 @@ Para que este aplicativo possa se escalonar e se manter gerenciavel, veja a seç
 +-- README.md
 ```
 
-## Mantenha em mente
+Mantenha em mente
 ---
 Este sistema foi feito com um propósito definido e escopo fechado, o desenvolvimento de um sistema robusto exige **práticas adicionais**, como por exemplo as listadas abaixo 
 
-##Rotas 
+Rotas 
 ---
 A utilização de [rotas](https://router.vuejs.org/guide/essentials/dynamic-matching.html "Explicação sobre Rotas") e views separadas possibilita a chamada da API mais direta e organizada, é possível recuperar informações passadas pela rota: ```javascript $route.params.name ``` e caso necessário é possível enviar [props](https://router.vuejs.org/guide/essentials/passing-props.html "Enviando props com routes").
 
@@ -85,6 +84,6 @@ Exemplo de uma url terminando com o nome do usuário ```www.gitfinder.com.br/use
 Mantenha-se atento com o [gerenciamento dos ciclos de vida](https://br.vuejs.org/v2/guide/instance.html#Diagrama-do-Ciclo-de-Vida) do Vue ao realizar chamadas para a API
 
 
-##Vuex <https://vuex.vuejs.org>
+Vuex
 ---
-Gerenciamento e controles de [estados e mutações](https://vuex.vuejs.org/guide/mutations.html "Mutações no Vuex") de propriedades podem ser compartilhadas (alem da possibilidade de adição de regras) através da aplicação com mais facilidade, de modo que a fonte de determinada informação ficará mais clara e estruturada
+Gerenciamento e controles de [estados e mutações](https://vuex.vuejs.org/guide/mutations.html "Mutações no Vuex") de propriedades podem ser compartilhadas (alem da possibilidade de adição de regras) através da aplicação com mais facilidade, de modo que a fonte de determinada informação ficará mais clara e estruturada [leia mais](https://vuex.vuejs.org)
