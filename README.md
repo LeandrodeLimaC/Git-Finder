@@ -35,7 +35,7 @@ Estrutura de pastas
 Testando a criação de um aplicativo enxuto sem rotas, aonde todo o controle é feito pelo App.vue através de estados, e mutações são comunicadas pelos filhos para seus pais 
 diretamente 
 
-***Nota*** - Vue é uma Framework leve proporciona a propagação de data de uma forma rápida, este aplicativo possuí uma estrutura baseada em mutação de componentes. Caso haja a necessidade deste aplicativo se escalonar para que ele se mantenha gerenciável veja a seção de ["Mantenha em mente"](https://github.com/LeandrodeLimaC/gitfinder#mantenha-em-mente)
+***Nota*** - Vue é uma Framework leve que proporciona a propagação de data de uma forma rápida, este aplicativo possuí uma estrutura baseada na apenas na organização de seus componentes. Caso haja a necessidade deste aplicativo se escalonar, veja a seção de ["Mantenha em mente"](https://github.com/LeandrodeLimaC/gitfinder#mantenha-em-mente)
 
 ```
 +-- public
